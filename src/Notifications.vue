@@ -153,11 +153,6 @@ const Component = {
     pauseOnHover: {
       type: Boolean,
       default: false
-    },
-
-    onClick: {
-      type: Function,
-      default: null
     }
 
   },
@@ -219,11 +214,11 @@ const Component = {
   methods: {
     destroyIfNecessary (item) {
       this.$emit('click', item)
+      if ([null, undefined].indexOf(item.onClick) !== -1) {
+        this.onClick(item)
+      }
       if (this.closeOnClick) {
         this.destroy(item)
-      }
-      if ([null, undefined].indexOf(this.onClick) !== -1) {
-        this.onClick(item)
       }
     },
     pauseTimeout () {
@@ -260,6 +255,8 @@ const Component = {
         ? event.ignoreDuplicates
         : this.ignoreDuplicates
 
+      const onClickHandler = event.onClick || null
+
       let { title, text, type, data, id } = event
 
       const item = {
@@ -270,7 +267,8 @@ const Component = {
         state: STATE.IDLE,
         speed,
         length: duration + 2 * speed,
-        data
+        data,
+        onClick
       }
 
       if (duration >= 0) {
