@@ -153,6 +153,11 @@ const Component = {
     pauseOnHover: {
       type: Boolean,
       default: false
+    },
+
+    onClick: {
+      type: Function,
+      default: null
     }
 
   },
@@ -216,6 +221,9 @@ const Component = {
       this.$emit('click', item)
       if (this.closeOnClick) {
         this.destroy(item)
+      }
+      if ([null, undefined].indexOf(this.onClick) !== -1) {
+        this.onClick(item)
       }
     },
     pauseTimeout () {
@@ -397,15 +405,15 @@ export default Component
 }
 
 .vue-notification-template {
-  display: block;	
-  box-sizing: border-box;	
-  background: white;	
-  text-align: left;	
+  display: block;
+  box-sizing: border-box;
+  background: white;
+  text-align: left;
 }
 
 .vue-notification {
   display: block;
-  box-sizing: border-box;  
+  box-sizing: border-box;
   text-align: left;
   font-size: 12px;
   padding: 10px;
