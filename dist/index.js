@@ -446,8 +446,6 @@ var Component = {
 
       var ignoreDuplicates = typeof event.ignoreDuplicates === 'boolean' ? event.ignoreDuplicates : this.ignoreDuplicates;
 
-      var onClickHandler = event.onClick || null;
-
       var title = event.title,
           text = event.text,
           type = event.type,
