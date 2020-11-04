@@ -215,7 +215,7 @@ const Component = {
     destroyIfNecessary (item) {
       this.$emit('click', item)
       if ([null, undefined].indexOf(item.onClick) !== -1) {
-        this.onClick(item)
+        item.onClick(item)
       }
       if (this.closeOnClick) {
         this.destroy(item)
