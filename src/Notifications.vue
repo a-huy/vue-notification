@@ -213,9 +213,7 @@ const Component = {
   },
   methods: {
     destroyIfNecessary (item) {
-      console.log('destroy')
       this.$emit('click', item)
-      console.log(item.onClick)
       if ([null, undefined].indexOf(item.onClick) === -1) {
         item.onClick(item)
       }
