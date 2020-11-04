@@ -255,7 +255,7 @@ const Component = {
         ? event.ignoreDuplicates
         : this.ignoreDuplicates
 
-      let { title, text, type, data, id } = event
+      let { title, text, type, data, id, onClick } = event
 
       const item = {
         id: id || Id(),

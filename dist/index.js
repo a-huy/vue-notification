@@ -450,7 +450,8 @@ var Component = {
           text = event.text,
           type = event.type,
           data = event.data,
-          id = event.id;
+          id = event.id,
+          onClick = event.onClick;
 
 
       var item = {
